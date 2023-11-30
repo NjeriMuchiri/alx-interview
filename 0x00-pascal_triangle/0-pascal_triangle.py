@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Function of a pascal triangle"""
+
 
 def pascal_triangle(n):
     """represents pascal's triangle of size n
