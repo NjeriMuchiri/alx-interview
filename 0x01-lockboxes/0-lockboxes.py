@@ -1,17 +1,28 @@
 #!/usr/bin/python3
+"""Interview question Practice"""
+from itertools import dropwhile
+
 
 def canUnlockAll(boxes):
-    if not any(boxes):
-        return False
-    n = len(boxes)
-    opened = [False] * n
-    opened[0] = True
-    boxList = [0]
+    """This method Checks if all boxes can be unlocked"""
 
-    while boxList:
-        current_box = boxList.pop()
-        for key in boxes[current_box]:
-            if 0 <= key and not opened[key]:
-                opened[key] = True
-                boxList.append(key)
-    return all(opened)
+    keys = {0}
+    available_boxes = range(len(boxes))
+
+    while True:
+        not_found = set()
+
+        for i in available_boxes:
+            if i in keys:
+                for key in dropwhile(lambda k: k in keys, boxes[i]):
+                    keys.add(key)
+            else:
+                not_found.add(i)
+
+        if available_boxes == not_found:
+            return False
+
+        if not not_found:
+            return True
+
+        available_boxes = not_found
