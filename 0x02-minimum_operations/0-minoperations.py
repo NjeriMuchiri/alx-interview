@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Method for the minimum operations"""
+
 
 def minOperations(n):
     if n <= 0:
@@ -9,6 +11,7 @@ def minOperations(n):
     the_clipboard = 0
 
     while HCharacter < n:
+        """Copying on the clipboard"""
         if n % HCharacter == 0:
             the_clipboard = HCharacter
             operations += 2
