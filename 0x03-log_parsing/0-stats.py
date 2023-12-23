@@ -1,11 +1,14 @@
 #!/usr/bin/python3
+"""file stat method"""
 import sys
 from collections import defaultdict
+
 
 def print_statistics(total_size, status_counts):
     print(f"File size: {total_size}")
     for status_code in sorted(status_counts.keys()):
         print(f"{status_code}: {status_counts[status_code]}")
+
 
 def main():
     total_size = 0
@@ -38,6 +41,7 @@ def main():
     except KeyboardInterrupt:
         # Handle Ctrl+C interruption
         print_statistics(total_size, status_counts)
+
 
 if __name__ == "__main__":
     main()
